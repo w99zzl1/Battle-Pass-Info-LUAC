@@ -1,5 +1,8 @@
 require "lib.sampfuncs"
+local moonloader = require('moonloader')
 local sampev = require 'lib.samp.events'
+local requests = require('requests')
+local encoding = require 'encoding'
 
 -- Ссылка на файл обновлений
 local raw = 'https://raw.githubusercontent.com/w99zzl1/Battle-Pass-Info-JSON/refs/heads/main/version.json'
@@ -37,7 +40,7 @@ end
 function main()
     if not isSampfuncsLoaded() or not isSampLoaded() then return end
     while not isSampAvailable() do wait(100) end
-    sampAddChatMessage("[Battle Pass Info] {FFFFFF}Battle Pass Info запущен успешно. Активация: {87CEFA}/mn - 8. {FFFFFF}Разработчик - {87CEFA}Arseniy Samsonov", 0x40E0D0)
+    sampAddChatMessage("[Battle Pass Info]: {FFFFFF}Battle Pass Info запущен успешно. Активация: {87CEFA}/mn - 8. {FFFFFF}Разработчик - {87CEFA}Arseniy Samsonov", 0x40E0D0)
     -- Проверка версии
     local updater = update()
     local lastver = updater:getLastVersion()
